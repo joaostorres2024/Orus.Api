@@ -1,0 +1,33 @@
+# ─── Node ───────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ─── Ambiente ───────────────────────────
+.env
+.env.local
+.env.production
+
+# ─── Uploads (arquivos enviados por usuários) ───
+uploads/
+
+# ─── Build / dist ───────────────────────
+dist/
+.quasar/
+
+# ─── IDEs ───────────────────────────────
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# ─── OS ─────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ─── Logs ───────────────────────────────
+*.log
+logs/
