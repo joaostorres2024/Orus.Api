@@ -97,4 +97,5 @@ async function excluirUsuario(id) {
   return { message: 'Usuário desativado com sucesso.' };
 }
 
+
 module.exports = { listarUsuarios, buscarPorId, criarUsuario, atualizarUsuario, excluirUsuario };
