@@ -76,15 +76,17 @@ async function buscarPorId(id) {
 async function criarChamado({ titulo, descricao, prioridade = 'media', usuario_id, estabelecimento_id }) {
   const pool   = await getPool();
   const result = await pool.request()
+  const numero = Math.floor(100000 + Math.random() * 900000)
+    .input('numero',             sql.Int,     numero)
     .input('titulo',             sql.VarChar, titulo)
     .input('descricao',          sql.Text,    descricao)
     .input('prioridade',         sql.VarChar, prioridade)
     .input('usuario_id',         sql.Int,     usuario_id)
     .input('estabelecimento_id', sql.Int,     estabelecimento_id)
     .query(`
-      INSERT INTO dbo.chamados (titulo, descricao, prioridade, status, usuario_id, estabelecimento_id, created_at, updated_at)
+      INSERT INTO dbo.chamados (numero, titulo, descricao, prioridade, status, usuario_id, estabelecimento_id, created_at, updated_at)
       OUTPUT INSERTED.id
-      VALUES (@titulo, @descricao, @prioridade, 'aberto', @usuario_id, @estabelecimento_id, GETDATE(), GETDATE())
+      VALUES (@numero, @titulo, @descricao, @prioridade, 'aberto', @usuario_id, @estabelecimento_id, GETDATE(), GETDATE())
     `);
   return buscarPorId(result.recordset[0].id);
 }
