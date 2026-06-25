@@ -73,7 +73,7 @@ async function buscarPorId(id) {
   return { ...chamado.recordset[0], comentarios: comentarios.recordset, anexos: anexos.recordset };
 }
 
-async function criarChamado({ titulo, descricao, prioridade = 'media', usuario_id, estabelecimento_id }) {
+async function criarChamado({numero, titulo, descricao, prioridade = 'media', usuario_id, estabelecimento_id }) {
   const pool   = await getPool();
   const result = await pool.request()
   const numero = Math.floor(100000 + Math.random() * 900000)
